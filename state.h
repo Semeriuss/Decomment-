@@ -5,7 +5,7 @@
 /*--------------------------*/
 /* Abenezer Sileshi     ATR */
 /* Aymen Mohammednur    ATR */
-/* Bethelihem Teshibelay ETR/9292/11*/
+/* Bethelhem Teshibelay ETR/9292/11*/
 /* Semere Habtu ATR/2583/11 */
 /* Semere Tereffe ATR       */
 /*--------------------------*/
