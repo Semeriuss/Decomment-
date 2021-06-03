@@ -1,3 +1,5 @@
+/* Group Project - 1        */
+/* A "Decomment" Program    */
 /*--------------------------*/
 /* Group Information        */
 /*--------------------------*/

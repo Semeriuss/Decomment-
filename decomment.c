@@ -1,3 +1,5 @@
+/* Group Project - 1        */
+/* A "Decomment" Program    */
 /*--------------------------*/
 /* Group Information        */
 /*--------------------------*/
@@ -7,6 +9,7 @@
 /* Semere Habtu ATR/2583/11 */
 /* Semere Tereffe ATR       */
 /*--------------------------*/
+
 
 
 #include <stdio.h>
