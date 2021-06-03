@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+
+
+int main()
+{
+	int a;
+int b;
+	puts("");  
+	
+	int a;//Not decommented 
+       	int b;
+
+
+	return 0;
+}

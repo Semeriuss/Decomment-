@@ -174,7 +174,7 @@ void checkTermination(State *state, int last_comment_line)
 {
 	if (*state == INSIDE_COMMENT || *state == COMMENT_ENDER)
 	{
-		fprintf(stderr, "Error: Comment started on line %d is unterminated comment.", last_comment_line);
+		fprintf(stderr, "Error: Comment started on line %d is unterminated comment.\n", last_comment_line);
 	}
 }
 
