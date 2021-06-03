@@ -10,7 +10,6 @@
 
 
 #include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
 #include "state.h" /* External enum declaration for State type */
 
@@ -41,11 +40,11 @@ int main(void)
 {
 	State state = NORMAL_CODE; /* Starting state in the source code */ 
 	
-	/* variable to count the line number in the code */
-	int code_line = 1; 
+	/* static variable to count the line number in the code */
+	static int code_line = 1; 
 
-	/* variable to index where a comment starts in case it terminates without closing */
-	int unterminated_line = 1; 
+	/* static variable to index where a comment starts in case it terminates without closing */
+	static int unterminated_line = 1; 
 
 	for (;;)
 	{

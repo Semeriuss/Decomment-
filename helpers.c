@@ -22,7 +22,7 @@
 
 /*-------------------------------------------------------------------------------------------------*/
 /* handleNormalCodeState: Implement the NORMAL_CODE state of the DFA. c is the current DFA         */
-/* character. *state specifies state. Writes out char till state changes based on c                */
+/* character. *state specifies current state. Writes out char till state changes based on c        */
 /*-------------------------------------------------------------------------------------------------*/
 void handleNormalCodeState(State *state, char c)
 {
@@ -96,7 +96,7 @@ void handleEscapeStrState(State *state, char c)
 
 /*-------------------------------------------------------------------------------------------------*/
 /* handleCommentStarterState: Implement the COMMENT_STARTER state of the DFA. c is the current     */
-/* DFA chararacter. Track code line and comment line. Change state according to c                  */
+/* DFA chararacter. Tracks code line and comment line. Change *state depending on what c is        */
 /*------------------------------------------------------------------------------------------------ */
 void handleCommentStarterState(State *state, char c, int *unterminated_line, int *code_line) 
 {
@@ -150,7 +150,11 @@ void handleCommentEnderState(State *state, char c)
 }
 
 /*------------------------------------------------------------------------------------------------*/
-/* lineCount: to count the lines of code processed                                                */
+/* Helper functions for error handling							          */
+/*------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------------*/
+/* lineCount: Takes initial position of *line and increments when input char is newline character */
 /*------------------------------------------------------------------------------------------------*/
 void lineCount(int *line, char c)
 {
@@ -162,8 +166,8 @@ void lineCount(int *line, char c)
 
 
 /*------------------------------------------------------------------------------------------------*/
-/* checkTermination: to validate the state at the end of the code and throw error if              */
-/* there is an unterminated comment.                                                              */
+/* checkTermination: Validate the state at the end of the code and throw error if                 */
+/* there is an unterminated comment. Determines the last unterminated line by our static variable */
 /*------------------------------------------------------------------------------------------------*/
 void checkTermination(State *state, int last_comment_line)
 {
