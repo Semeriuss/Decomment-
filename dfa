@@ -1,0 +1,32 @@
+NORMAL_CODE (accept) <-- the start state
+    /: COMMENT_STARTER
+    ": IN_STR_LITERAL
+    \: IN_CHAR_LITERAL
+    other: NORMAL_CODE
+
+COMMENT_STARTER (reject)
+    *: INSIDE_COMMENT
+    /: COMMENT_STARTER
+    other: NORMAL_CODE
+
+IN_STR_LITERAL (reject)
+    \: ESCAPE_CHAR
+    ": NORMAL_CODE
+    other: IN_STR_LITERAL
+
+IN_CHAR_LITERAL (reject)
+    \: ESCAPE_CHAR
+    \': NORMAL_CODE
+    other: IN_CHAR_LITERAL
+
+INSIDE_COMMENT (reject)
+    *: COMMENT_ENDER
+    other: INSIDE_COMMENT
+
+ESCAPE_CHAR (reject)
+    IN_CHAR_LITERAL
+
+COMMENT_ENDER (reject)
+    /: NORMAL_CODE
+    *: COMMENT_ENDER
+    other: INSIDE_COMMENT
