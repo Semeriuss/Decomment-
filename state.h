@@ -1,14 +1,14 @@
-/* Group Project - 1        */
-/* A "Decomment" Program    *
-/*--------------------------*/
-/* Group Information        */
-/*--------------------------*/
-/* Abenezer Sileshi     ATR */
-/* Aymen Mohammednur    ATR */
-/* Bethelhem Teshibelay ETR/9292/11*/
-/* Semere Habtu ATR/2583/11 */
-/* Semere Tereffe ATR       */
-/*--------------------------*/
+/* 			Group Project - 1       */
+/* 		 A "Decomment" Program    	*/
+/*----------------------------------*/
+/* 			Group Information       */
+/*----------------------------------*/
+/* Abenezer Sleshi      ATR/7940/11 */
+/* Aymen Mohammednur    ATR/5985/11 */
+/* Bethelhem Teshibelay ETR/9292/11 */
+/* Semere Habtu 		ATR/2583/11 */
+/* Semere Tereffe		ATR/4113/11 */
+/*----------------------------------*/
 
 
 
