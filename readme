@@ -1,12 +1,34 @@
-Abenezer Sleshi         ATR/7940/11
-Aymen Mohammednur       ATR/5985/11
-Bethelhem Teshibelay    ETR/9292/11
-Semere Habtu            ATR/2583/11
-Semere Tereffe          ATR/4113/11
+PROJECT 1 - Decommenting in C
 
-We spent a few days trying to understand what finite
-state graphcs are and how we could use them as frameworks
+GROUP MEMBERS
+
+1 - Abenezer Sleshi         ATR/7940/11
+2 - Aymen Mohammednur       ATR/5985/11
+3 - Bethelhem Teshibelay    ETR/9292/11
+4 - Semere Habtu            ATR/2583/11
+5 - Semere Tereffe          ATR/4113/11
+
+We spent a sometime trying to understand the advantages of using 
+deteriministic finite automata (DFA) in creating our source code
+from the top down and how we could use them as frameworks
 for writing scripts.
 
-This assignment was good; it made us not only learn a concept
-but also implement it in an actual problem.
+This assignment was educational; it challenged us to go and learn
+beyond our formal classes and implement it on an actual problem. 
+
+We tried to modularize our code  to make it cleaner and more 
+readable. We created our enum data type to in a header file named 
+state.h to store the states of the DFA. We also separated the 
+implementation of the state handlers in an external helper module 
+named helpers.c. This allowed us to apply separation of concerns. 
+We also limited the scope of the two global variables we defined 
+in our main program to track the number of lines and last unterminated 
+comment inside the code for error handling purposes by making them
+static variables. 
+
+For linking and compiling run the following command on a linux machine,
+- > gcc helpers.c decomment.c -o decomment
+
+For testing the program, 
+- > ./decomment <test.c> test.txt  //Functional in a working source code
+- > ./decomment <testError.c> testError.txt //Returns standard error message with line number

@@ -62,7 +62,9 @@ void handleInCharLiteralState(State *state, char c)
 	}	
 }
 
-/*-------------------------------------------------------------------------------------------------*//* handleInStringState: Implement the IN_STR_LITERAL state of the DFA. c is the current DFA        *//* character. *state specifies the input stream is inside a string literal. check for escape char  */
+/*-------------------------------------------------------------------------------------------------*/
+/* handleInStringState: Implement the IN_STR_LITERAL state of the DFA. c is the current DFA        */
+/* character. *state specifies the input stream is inside a string literal. check for escape char  */
 /*-------------------------------------------------------------------------------------------------*/
 void handleInStringLiteralState(State *state, char c) 
 {
@@ -87,7 +89,9 @@ void handleEscapeCharState(State *state, char c)
 }
 
 
-/*-------------------------------------------------------------------------------------------------*//* handleEscapeStrState: Implement the ESCAPE_STR state of the DFA. c is the current DFA character *//* *state specifies the input stream is inside an escape character. Treat as IN_STR_LITERAL        */
+/*-------------------------------------------------------------------------------------------------*/
+/* handleEscapeStrState: Implement the ESCAPE_STR state of the DFA. c is the current DFA character */
+/* *state specifies the input stream is inside an escape character. Treat as IN_STR_LITERAL        */
 /*-------------------------------------------------------------------------------------------------*/
 void handleEscapeStrState(State *state, char c)
 {
@@ -119,7 +123,9 @@ void handleCommentStarterState(State *state, char c, int *unterminated_line, int
 	}
 }
 
-/*------------------------------------------------------------------------------------------------ *//* handleInsideCommentState: Implement the INSIDE_COMMENT state of the DFA. c is the current DFA   *//* character. *state specifies the state. Ignore chars including new line char until state changes */
+/*------------------------------------------------------------------------------------------------ */
+/* handleInsideCommentState: Implement the INSIDE_COMMENT state of the DFA. c is the current DFA   */
+/* character. *state specifies the state. Ignore chars including new line char until state changes */
 /*-------------------------------------------------------------------------------------------------*/
 void handleInsideCommentState(State *state, char c)
 {
@@ -134,7 +140,9 @@ void handleInsideCommentState(State *state, char c)
 	}
 }
 
-/*-------------------------------------------------------------------------------------------------*//* handleCommentEnderState: Implement the COMMENT_ENDER state of the DFA. c is the current DFA     *//* character.*state specifies state to INSIDE_COMMENT till ending char found. Add space after end  */
+/*-------------------------------------------------------------------------------------------------*/
+/* handleCommentEnderState: Implement the COMMENT_ENDER state of the DFA. c is the current DFA     */
+/* character.*state specifies state to INSIDE_COMMENT till ending char found. Add space after end  */
 /*-------------------------------------------------------------------------------------------------*/
 void handleCommentEnderState(State *state, char c)
 {

@@ -10,8 +10,6 @@
 /* Semere Tereffe		ATR/4113/11 */
 /*----------------------------------*/
 
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "state.h" /* External enum declaration for State type */
@@ -29,11 +27,10 @@ extern void handleEscapeCharState(State *state, char c);
 extern void handleEscapeStrState(State *state, char c);
 
 /*-------------------------------------------------------------------------------------------------*/
-/* External helper function declarations for error handling 				           */
+/* External helper function declarations for error handling 				           			   */
 /*-------------------------------------------------------------------------------------------------*/
 extern void lineCount(int *line, char c);
 extern void checkTermination(State *state, int last_comment_line);
-
 
 /*------------------------------------------------------------------------------------------------*/
 /*main: Read text from stdin. Check the first character of each "word" and determine the state    */
@@ -41,58 +38,58 @@ extern void checkTermination(State *state, int last_comment_line);
 /*------------------------------------------------------------------------------------------------*/
 int main(void)
 {
-	State state = NORMAL_CODE; /* Starting state in the source code */ 
-	
+	State state = NORMAL_CODE; /* Starting state in the source code */
+
 	/* static variable to count the line number in the code */
-	static int code_line = 1; 
+	static int code_line = 1;
 
 	/* static variable to index where a comment starts in case it terminates without closing */
-	static int unterminated_line = 1; 
+	static int unterminated_line = 1;
 
 	for (;;)
 	{
 		char c = getchar();
 		lineCount(&code_line, c);
 
-		if (c == EOF) 
+		if (c == EOF)
 		{
 			checkTermination(&state, unterminated_line);
 			break;
 		}
 
-		switch(state)
+		switch (state)
 		{
-			case NORMAL_CODE:
-				handleNormalCodeState(&state, c);
-				break;
+		case NORMAL_CODE:
+			handleNormalCodeState(&state, c);
+			break;
 
-			case IN_CHAR_LITERAL:
-				handleInCharLiteralState(&state, c);
-				break;
+		case IN_CHAR_LITERAL:
+			handleInCharLiteralState(&state, c);
+			break;
 
-			case IN_STR_LITERAL:
-				handleInStringLiteralState(&state, c);
-				break;
+		case IN_STR_LITERAL:
+			handleInStringLiteralState(&state, c);
+			break;
 
-			case ESCAPE_CHAR:
-				handleEscapeCharState(&state, c);
-				break;
+		case ESCAPE_CHAR:
+			handleEscapeCharState(&state, c);
+			break;
 
-			case ESCAPE_STR:
-				handleEscapeStrState(&state, c);
-				break;
+		case ESCAPE_STR:
+			handleEscapeStrState(&state, c);
+			break;
 
-			case COMMENT_STARTER:
-				handleCommentStarterState(&state, c, &unterminated_line, &code_line);
-				break;
+		case COMMENT_STARTER:
+			handleCommentStarterState(&state, c, &unterminated_line, &code_line);
+			break;
 
-			case INSIDE_COMMENT:
-				handleInsideCommentState(&state, c);
-				break;
+		case INSIDE_COMMENT:
+			handleInsideCommentState(&state, c);
+			break;
 
-			case COMMENT_ENDER:
-				handleCommentEnderState(&state, c);
-				break;
+		case COMMENT_ENDER:
+			handleCommentEnderState(&state, c);
+			break;
 		}
 	}
 	return 0;
