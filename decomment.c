@@ -14,11 +14,13 @@
 #include <stdlib.h>
 #include "state.h" /* External enum declaration for State type */
 
-/*-------------------------------------------------------------------------------------------------*/
-/* External function template declarations used to handle each state in the DFA                    */
-/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/* External function template declarations used to handle each state */
+/* in the DFA 														 */
+/*-------------------------------------------------------------------*/
 extern void handleNormalCodeState(State *state, char c);
-extern void handleCommentStarterState(State *state, char c, int *unterminated_line, int *code_line);
+extern void handleCommentStarterState(State *state, char c,
+					int *unterminated_line, int *code_line);
 extern void handleInsideCommentState(State *state, char c);
 extern void handleCommentEnderState(State *state, char c);
 extern void handleInCharLiteralState(State *state, char c);
@@ -26,24 +28,27 @@ extern void handleInStringLiteralState(State *state, char c);
 extern void handleEscapeCharState(State *state, char c);
 extern void handleEscapeStrState(State *state, char c);
 
-/*-------------------------------------------------------------------------------------------------*/
-/* External helper function declarations for error handling 				           			   */
-/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/* External helper function declarations for error handling 	     */
+/*-------------------------------------------------------------------*/
+
 extern void lineCount(int *line, char c);
 extern void checkTermination(State *state, int last_comment_line);
 
-/*------------------------------------------------------------------------------------------------*/
-/*main: Read text from stdin. Check the first character of each "word" and determine the state    */
-/*of the character. Handle the state and repeat until end of file is reached. Return 0.           */
-/*------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/*main: Read text from stdin. Remove comment. Write text to stdout if*/
+/*text ends valid code. Return 0.  Writes error if text ends with    */
+/*unterminated comment.Return 1										 */
+/*-------------------------------------------------------------------*/
 int main(void)
 {
 	State state = NORMAL_CODE; /* Starting state in the source code */
 
-	/* static variable to count the line number in the code */
+	/* static variable to count the line number in the code         */
 	static int code_line = 1;
 
-	/* static variable to index where a comment starts in case it terminates without closing */
+	/* static variable to index where a comment starts in case it   */
+	/* terminates without closing 									*/
 	static int unterminated_line = 1;
 
 	for (;;)
