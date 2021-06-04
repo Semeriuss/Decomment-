@@ -71,7 +71,7 @@ void handleInStringLiteralState(State *state, char c)
 	putchar(c);
 	if (c == '\\')
 	{
-		*state = ESCAPE_CHAR;
+		*state = ESCAPE_STR;
 	}else if (c == '"')
 	{
 		*state = NORMAL_CODE;
