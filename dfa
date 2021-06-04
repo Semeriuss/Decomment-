@@ -25,6 +25,9 @@ INSIDE_COMMENT (reject)
 
 ESCAPE_CHAR (reject)
     IN_CHAR_LITERAL
+    
+ESCAPE_STR (reject)
+    IN_STR_LITERAL
 
 COMMENT_ENDER (reject)
     /: NORMAL_CODE
